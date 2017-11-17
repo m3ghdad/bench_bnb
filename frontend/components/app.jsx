@@ -7,6 +7,9 @@ const App = () => (
       <h1>Bench BnB</h1>
       <GreetingContainer />
     </header>
+
+    <Route path="/login" component={SessionFormContainer} />
+    <Route path="/signup" component={SessionFormContainer} />
   </div>
 );
 
