@@ -1,34 +1,28 @@
 import * as APIUtil from '../util/session_api_util'
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-export const RECEIVE_LOGOUT_SUCCESS = "RECEIVE_LOGOUT_SUCCESS";
-
-export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';
-export const SIGNUP = 'SIGNUP';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 // ASYNC ACTIONS
-export const requestSignup = user => dispatch => {
+export const signup = user => dispatch => {
   return APIUtil.signup(user).then(
     currentUser => dispatch(receiveCurrentUser(currentUser)),
     error => dispatch(receiveErrors(error.responseJSON))
   );
 };
 
-export const requestLogin = user => dispatch => {
+export const login = user => dispatch => {
   return APIUtil.login(user).then(
     currentUser => dispatch(receiveCurrentUser(currentUser)),
     error = > dispatch(receiveErrors(error.responseJSON))
   );
 };
 
-export const requestLogout = () => dispatch => {
+export const logout = () => dispatch => {
   return APIUtil.logout().then(
-    () => dispatch(receiveLogoutSuccess())
+    () => dispatch(receiveCurrentUser(null))
   );
 };
-
 
 // // SYNC ACTIONS
 export const receiveCurrentUser = currentUser => ({
@@ -36,11 +30,7 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export const receiveLogoutSuccess = () => ({
-  type: RECEIVE_LOGOUT_SUCCESS
-});
-
 export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS
+  type: RECEIVE_SESSION_ERRORS
   errors
 });
