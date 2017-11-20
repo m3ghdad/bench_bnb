@@ -2,11 +2,12 @@ import {connect} from 'react-redux';
 import BenchIndex from './bench_index';
 import {fetchBenches} from '../actions/bench_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
   benches: state.benches
-}
+})
 
-const mapDispatchToProps = dispatch => ({
+
+const mapDispatchToProps = (dispatch) => ({
   fetchBenches: () => dispatch(fetchBenches())
 });
 

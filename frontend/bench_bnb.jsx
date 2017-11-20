@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
-  window.dispatch = store.dispatch;
-  window.getState = store.dispatch;
-  window.fetchBenches = fetchBenches;
+  // 
+  // window.dispatch = store.dispatch;
+  // window.getState = store.dispatch;
+  // window.fetchBenches = fetchBenches;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

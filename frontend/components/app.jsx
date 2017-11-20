@@ -3,6 +3,7 @@ import GreetingContainer from './greeting/greeting_container';
 import SessionFormContainer from './session_form/session_form_container';
 import {Route} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import BenchIndexContainer from './bench_index_container'
 
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
 
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/signup" component={SessionFormContainer} />
+    <Route exact path="/" component={ BenchIndexContainer } />
   </div>
 );
 
