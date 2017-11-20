@@ -2,7 +2,7 @@ import { RECEIVE_BENCHES } from '../actions/bench_actions';
 
 const benchesReducer = (state = {}, action) => {
   Object.freeze(state);
-  switch (atcion.type) {
+  switch (action.type) {
     case RECEIVE_BENCHES:
       return action.benches;
     default:
