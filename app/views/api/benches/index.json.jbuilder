@@ -1,1 +1,5 @@
-json.extract! @benches, :description, :lat, :lng
+@benches.each do |bench|
+  json.set! bench.id do
+    json.partial! 'bench', bench: bench
+  end
+end

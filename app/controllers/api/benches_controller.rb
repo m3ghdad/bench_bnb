@@ -1,15 +1,17 @@
 class Api::BenchesController < ApplicationController
+  before_action :require_logged_in, only: [:create]
+  
   def index
     @benches = Bench.all
   end
 
   def create
-    @bench = Bench.new(bench_params)
-    if @bench.save
-      render "api/benches/index"
-    else
-      render json: @bench.errors.full_messages, status: 422
-    end
+    @bench = Bench.create!(bench_params)
+    render :show
+  end
+
+  def show
+    @bench = Bench.find(params[:id])
   end
 
   private
@@ -17,3 +19,14 @@ class Api::BenchesController < ApplicationController
     params.require(:bench).permit(:description, :lat, :lng)
   end
 end
+
+
+
+  def show
+    @bench = Bench.find(params[:id])
+  end
+
+  def create
+    @bench = Bench.create!(bench_params)
+    render :show
+  end

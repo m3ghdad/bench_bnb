@@ -24,4 +24,4 @@ Bench.create!(
   description: 'Hyatt',
   lat: 37.794101,
   lng: -122.395897,
-)
+) 
